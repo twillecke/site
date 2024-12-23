@@ -4,7 +4,6 @@ import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
-import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
 const blog = (await getCollection("blog"))
@@ -52,7 +51,7 @@ const work = await Promise.all(
             <Link href="https://psicologia.ufsc.br/" aria-label="Psychology Department at UFSC" external>
               UFSC
             </Link>.
-            but I but I made the switch to the tech industry. Besides working as a web developer,
+            but I made the switch to the tech industry. Besides working as a web developer,
             I'm currently studying Systems Analysis and Development at
             <Link href="https://univali.br/" aria-label="UNIVALI website" external>
               UNIVALI.
