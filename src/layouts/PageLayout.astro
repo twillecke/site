@@ -19,13 +19,12 @@ const { title, description } = Astro.props;
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
       <!-- Google tag (gtag.js) -->
       <script
-        data-category="analytics"
         is:inline
         type="text/partytown"
         async src="https://www.googletagmanager.com/gtag/js?id=G-Y1TJ1Y512S"
       ></script>
 
-      <script data-category="analytics" is:inline type="text/partytown">
+      <script is:inline data-category="analytics" type="text/partytown">
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -39,6 +38,17 @@ const { title, description } = Astro.props;
 
         gtag('config', 'G-Y1TJ1Y512S');
       </script>
+      <script is:inline data-category="analytics">
+        function updateConsents() {
+          gtag("consent", "update", {
+            ad_storage: "granted",
+            ad_user_data: "granted",
+            ad_personalization: "granted",
+            analytics_storage: "granted",
+          });
+        }
+      </script>
+      
   </head>
   <body>
     <Header />
