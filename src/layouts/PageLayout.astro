@@ -20,34 +20,33 @@ const { title, description } = Astro.props;
       <!-- Google tag (gtag.js) -->
       <script
         is:inline
-        type="text/partytown"
         async src="https://www.googletagmanager.com/gtag/js?id=G-Y1TJ1Y512S"
-      ></script>
+      ></script>  
 
-      <script is:inline data-category="analytics" type="text/partytown">
+      <script is:inline>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
+  
         gtag("consent", "default", {
             ad_storage: "denied",
             ad_user_data: "denied",
             ad_personalization: "denied",
             analytics_storage: "denied",
         });
-
+  
         gtag('config', 'G-Y1TJ1Y512S');
       </script>
-      <script is:inline data-category="analytics">
-        function updateConsents() {
-          gtag("consent", "update", {
-            ad_storage: "granted",
-            ad_user_data: "granted",
-            ad_personalization: "granted",
-            analytics_storage: "granted",
-          });
-        }
-      </script>
+    <script is:inline>
+      window.updateConsents = function() {
+        gtag("consent", "update", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+        });
+      }
+    </script>
       
   </head>
   <body>
