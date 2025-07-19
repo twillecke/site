@@ -86,19 +86,17 @@ But before that, the bucket must check if there is a refill to be made. Since th
 	private refillIfNeeded(): void {
 		const now = new Date();
 		const elapsed = now.getTime() - this.refilledAt.getTime();
-		if (elapsed >= BUCKET_REFILL_RATE) {
-			const intervalsPassed = Math.floor(elapsed / BUCKET_REFILL_RATE);
-			if (intervalsPassed > 0) {
-				this.remaining = Math.min(
-					this.limit,
-					this.remaining + intervalsPassed,
-				);
-				this.refilledAt = new Date(
-					this.refilledAt.getTime() +
-						intervalsPassed * BUCKET_REFILL_RATE,
-				);
-			}
-		}
+		if (elapsed < BUCKET_REFILL_RATE) return;
+		const intervalsPassed = Math.floor(elapsed / BUCKET_REFILL_RATE);
+		if (intervalsPassed <= 0) return;
+		this.remaining = Math.min(
+			this.limit,
+			this.remaining + intervalsPassed,
+		);
+		this.refilledAt = new Date(
+			this.refilledAt.getTime() +
+				intervalsPassed * BUCKET_REFILL_RATE,
+		);
 	}
 }
 ```
