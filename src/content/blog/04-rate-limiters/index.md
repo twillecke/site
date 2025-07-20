@@ -146,8 +146,8 @@ When returning a response from a service protected by rate limiters, it is adequ
 ```ts
     res.set(
     {
-        "X-RateLimit-Limit":  bucket.getLimit().toString());
-        "X-RateLimit-Remaining":     bucket.getRemaining().toString();
+        "X-RateLimit-Limit": bucket.getLimit().toString());
+        "X-RateLimit-Remaining": bucket.getRemaining().toString();
         "X-RateLimit-Reset": bucket.getResetTime().toString();
     }
 ```
