@@ -1,7 +1,7 @@
 ---
 title: "Handling traffic with rate limiters"
 description: "A TypeScript implementation"
-date: "Jul 25 2025"
+date: "Jul 21 2025"
 draft: false
 ---
 Many times systems are overwhelmed by huge amounts of requests. Many of them implement a variety of mitigation strategies: load balancers, asynchronous queue systems, and rate limiters.
