@@ -67,5 +67,30 @@ CookieConsent.run({
                 }
             }
         }
+    },
+    onConsent: function({cookie}) {
+        if (cookie.categories.includes('analytics')) {
+            // User accepted analytics, update GA4 consent
+            if (typeof window.updateConsents === 'function') {
+                window.updateConsents();
+            }
+        }
+    },
+    onChange: function({cookie, changedCategories}) {
+        if (changedCategories.includes('analytics')) {
+            if (cookie.categories.includes('analytics')) {
+                // Analytics enabled
+                if (typeof window.updateConsents === 'function') {
+                    window.updateConsents();
+                }
+            } else {
+                // Analytics disabled - revoke consent
+                if (typeof gtag === 'function') {
+                    gtag("consent", "update", {
+                        analytics_storage: "denied"
+                    });
+                }
+            }
+        }
     }
 });
